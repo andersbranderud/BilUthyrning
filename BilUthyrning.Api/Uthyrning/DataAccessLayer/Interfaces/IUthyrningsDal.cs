@@ -9,10 +9,10 @@ namespace Uthyrning.DataAccessLayer.Interfaces
         Task<UthyrningsModel> RegistreraUthyrningAvBilAsync(UthyrningsModel uthyrning);
 
         // Hitta bokningen baserat på bokningsnummer.
-        Task<UthyrningsModel> HittaUthyrningMedBokningsnummerAsync(string bokningsnummer);
+        Task<UthyrningsModel> HittaUthyrningMedBokningsNummerAsync(string bokningsNummer);
 
         /// Hitta baspriset baserat på datum
-        Task<BasPrisModel> HittaBasPrisAsync(DateTime effectiveDate);
+        Task<BasPrisModel> HittaBasPrisAsync(DateTime effectiveDate); 
         
     }
 }

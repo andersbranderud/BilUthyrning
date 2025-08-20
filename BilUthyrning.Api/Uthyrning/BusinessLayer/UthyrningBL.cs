@@ -1,10 +1,9 @@
 using BilUthyrning.ViewModels;
-using BusinessLayer.Helpers;
+using Uthyrning.BusinessLayer.Helpers;
 using Uthyrning.DataAccessLayer.Interfaces;
 
 namespace Uthyrning.BusinessLayer
 {
-
     public class UthyrningBL : IUthyrningBL
     {
         private readonly IUthyrningsDal _uthyrningDal;
@@ -14,7 +13,7 @@ namespace Uthyrning.BusinessLayer
         }
         public async Task<UthyrningsModel> HittaUthyrningMedBokningsnummerAsync(string bokningsnummer)
         {
-            return await _uthyrningDal.HittaUthyrningMedBokningsnummerAsync(bokningsnummer);
+            return await _uthyrningDal.HittaUthyrningMedBokningsNummerAsync(bokningsnummer);
         }
 
         /// <summary>
@@ -34,7 +33,7 @@ namespace Uthyrning.BusinessLayer
 
         public async Task<UthyrningsModel> RegistreraAterlamningAvBilAsync(AterlamningModel aterlamningModel)
         {
-            var matchandeUthyrning = await _uthyrningDal.HittaUthyrningMedBokningsnummerAsync(aterlamningModel.Bokningsnummer);
+            var matchandeUthyrning = await _uthyrningDal.HittaUthyrningMedBokningsNummerAsync(aterlamningModel.Bokningsnummer);
 
             if (matchandeUthyrning == null)
             {

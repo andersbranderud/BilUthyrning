@@ -1,9 +1,9 @@
-namespace BusinessLayer.Helpers
+namespace Uthyrning.BusinessLayer.Helpers
 {
     using System;
     using BilUthyrning.Enums;
 
-    public class UthyrningKalkylator
+    public static class UthyrningKalkylator
     {
         public const decimal KombiMultiplikator = 1.3m;
         public const decimal LastbilMultiplikator = 1.5m;
