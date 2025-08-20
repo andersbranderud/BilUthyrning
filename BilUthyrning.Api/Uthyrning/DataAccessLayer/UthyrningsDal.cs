@@ -38,7 +38,7 @@ namespace Uthyrning.DataAccessLayer.Interfaces
         // Eftersom formlerna readan har multiplar 1.3, 1.5 gör jag här antagandet att dessa kan variera
         // beroende på effectiveDate. Så vi kan skapa en tabell med företagspriser som är baserade på datum.
         // Tabell: BasPris ; kolumner BasPrisId, basDygnsHyra, basKmPris, effectiveDateFrom, effectiveDateTo
-        public async Task<BasPrisModel> HittaBasPrisAsync(DateTime effectiveDate)
+        public async Task<BasPrisModel> HittaBasPrisAsync(DateTime effectiveDate, BilKategoriEnum bilKategori)
         {
 
             // Todo. Hämta data från databas, mappa via mapping layer från EntityFramework model till ViewModel
@@ -47,7 +47,8 @@ namespace Uthyrning.DataAccessLayer.Interfaces
                 EffectiveDateFrom = effectiveDate,
                 EffectiveDateTo = effectiveDate.AddDays(30), // Example: valid for 30 days
                 BasKmPris = 2.50m, // Example price per km
-                basDygnsHyra = 300.00m // Example daily rental price
+                BasDygnsHyra = 300.00m, // Example daily rental price
+                BilKategori = bilKategori
             };
             return await Task.FromResult(basPrisModel); 
         }

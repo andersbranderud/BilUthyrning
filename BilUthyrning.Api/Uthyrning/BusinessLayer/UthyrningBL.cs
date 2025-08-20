@@ -55,7 +55,7 @@ namespace Uthyrning.BusinessLayer
                 throw new ArgumentException("Återlämningsdatum kan inte vara tidigare än uthyrningsdatum.");
             }
             // Använder baspris som godkänts vid uthyrning, i fall priset har ökat sedan dess.
-            BasPrisModel basPrisModel = await _uthyrningDal.HittaBasPrisAsync(hyrDatum);
+            BasPrisModel basPrisModel = await _uthyrningDal.HittaBasPrisAsync(hyrDatum, bilKategori);
 
             if (basPrisModel == null)
             {
@@ -66,7 +66,7 @@ namespace Uthyrning.BusinessLayer
 
             var beraknadKostnad = UthyrningKalkylator.BeraknaKostnadAsync(
                 antalDygnHyra,
-                basPrisModel.basDygnsHyra,
+                basPrisModel.BasDygnsHyra,
                 basPrisModel.BasKmPris,
                 antalKm,
                 bilKategori);

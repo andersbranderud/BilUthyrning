@@ -1,5 +1,6 @@
 namespace Uthyrning.DataAccessLayer.Interfaces
 {
+    using BilUthyrning.Enums;
     using BilUthyrning.ViewModels;
     using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace Uthyrning.DataAccessLayer.Interfaces
         Task<UthyrningsModel> HittaUthyrningMedBokningsNummerAsync(string bokningsNummer);
 
         /// Hitta baspriset baserat på datum
-        Task<BasPrisModel> HittaBasPrisAsync(DateTime effectiveDate); 
+        Task<BasPrisModel> HittaBasPrisAsync(DateTime effectiveDate, BilKategoriEnum bilKategori); 
         
     }
 }
