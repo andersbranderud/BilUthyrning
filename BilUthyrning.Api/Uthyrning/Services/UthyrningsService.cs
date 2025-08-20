@@ -15,7 +15,7 @@ namespace BilUthyrning.Api.Services.Interfaces
         /// Registrerar uthyrningen av en bil.
         /// </summary>
         /// <param name="uthyrning">Uthyrningsdetaljerna</param>
-        public async Task<JsonResult> RegistreraUtlamningAvBilAsync(UthyrningsModel uthyrning)
+        public async Task<UthyrningsModel> RegistreraUtlamningAvBilAsync(UthyrningsModel uthyrning)
         {
             if (uthyrning == null)
             {
@@ -24,21 +24,13 @@ namespace BilUthyrning.Api.Services.Interfaces
 
             try
             {
-                await _uthyrningBL.RegistreraUtlamningAvBilAsync(uthyrning);
+                return await _uthyrningBL.RegistreraUtlamningAvBilAsync(uthyrning);
             }
             catch (Exception ex)
             {
                 // Todo logga felet.
-                return new JsonResult(new { error = "Det gick inte att registrera uthyrningen.", details = ex.Message })
-                {
-                    StatusCode = StatusCodes.Status500InternalServerError
-                };
-            }
-
-            return new JsonResult(uthyrning)
-            {
-                StatusCode = StatusCodes.Status201Created
-            };
+                throw new Exception("Det gick inte att registrera uthyrningen av bilen.", ex);
+            }        
         }
 
         public async Task<UthyrningsModel> RegistreraAterlamningAvBilAsync(AterlamningModel aterlamning)

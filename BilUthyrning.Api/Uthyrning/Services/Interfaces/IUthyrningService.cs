@@ -6,7 +6,7 @@ namespace BilUthyrning.Api.Services.Interfaces
     public interface IUthyrningService
     {
         // Registrera utlamning av bil.
-        Task<JsonResult> RegistreraUtlamningAvBilAsync(UthyrningsModel uthyrning);
+        Task<UthyrningsModel> RegistreraUtlamningAvBilAsync(UthyrningsModel uthyrning);
         // Registrera återlämning av bil.
         Task<UthyrningsModel> RegistreraAterlamningAvBilAsync(AterlamningModel aterlamning);
     }

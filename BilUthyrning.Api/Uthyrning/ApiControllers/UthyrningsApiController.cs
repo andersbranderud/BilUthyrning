@@ -16,11 +16,11 @@ namespace BilUthyrning.Api.ApiControllers
 
         // POST: api/uthyrningar
         [HttpPost]
-        public async Task<ActionResult<UthyrningsModel>> RegistreraUtlamningAvBil([FromBody] UthyrningsModel uthyrning)
+        public async Task<UthyrningsModel> RegistreraUtlamningAvBil([FromBody] UthyrningsModel uthyrning)
         {
             if (uthyrning == null || !ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                throw new ArgumentNullException(nameof(uthyrning));
             }
 
             return await _uthyrningService.RegistreraUtlamningAvBilAsync(uthyrning);
@@ -28,21 +28,14 @@ namespace BilUthyrning.Api.ApiControllers
 
         // POST: api/uthyrningar/aterlamning
         [HttpPost("aterlamning")]
-        public async Task<ActionResult<UthyrningsModel>> RegistreraAterlamningAvBil([FromBody] AterlamningModel aterlamning)
+        public async Task<UthyrningsModel> RegistreraAterlamningAvBil([FromBody] AterlamningModel aterlamning)
         {
             if (aterlamning == null || !ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                throw new ArgumentNullException(nameof(aterlamning));
             }
 
-            var result = await _uthyrningService.RegistreraAterlamningAvBilAsync(aterlamning);
-            
-            if (result == null)
-            {
-                return NotFound("Ingen matchande uthyrning hittades för det angivna bokningsnumret.");
-            }
-
-            return Ok(result);
+            return await _uthyrningService.RegistreraAterlamningAvBilAsync(aterlamning);            
         }
     }
 }
