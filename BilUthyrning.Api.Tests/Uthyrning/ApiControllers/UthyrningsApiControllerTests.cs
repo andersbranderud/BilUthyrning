@@ -4,7 +4,6 @@ namespace Uthyrning.ApiControllerTests
     using BilUthyrning.Api.Services.Interfaces;
     using BilUthyrning.Enums;
     using BilUthyrning.ViewModels;
-    using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using Uthyrning.BusinessLayer;
     using Xunit;
