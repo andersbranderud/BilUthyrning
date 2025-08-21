@@ -8,6 +8,7 @@ Hela modulen kan t.ex. leverera som Nuget-paket, så att den enkelt kan integrer
 
 
 Tänkta databastabeller:  
+------
   
 Kravspecifikationen beskriver variabelt baspris. För att enkelt kunna konfigurera nya priser både för olika kunder och för olika biltyper, föreslås vi att dessa konfigurationer lagras i en databas. I ett senare skede kan även ett admingränssnitt skapas för att göra uppdateringar för dessa.  
 En ändring på antingen BasKmPris eller BasDygnHyra skapar en ny rad i databas för specificerat datumintervall och bilkategori.  
