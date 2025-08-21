@@ -63,7 +63,8 @@ namespace Uthyrning.BusinessLayer.TestHelpers
         public void BeraknaKostnadAsync_InvalidInputs_ThrowsArgumentException()
         {
             // Arrange
-            int antalDygn = -1; // Invalid input
+            // Ogiltig input
+            int antalDygn = -1;
             decimal basDygnsHyra = 100m;
             decimal basKmPris = 2m;
             int antalKm = 300;

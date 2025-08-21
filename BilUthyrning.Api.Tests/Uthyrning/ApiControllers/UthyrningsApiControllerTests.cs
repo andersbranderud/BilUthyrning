@@ -19,10 +19,8 @@ namespace Uthyrning.ApiControllerTests
                 RegistreringsNummerBil = "ABC123",
                 BilKategori = BilKategoriEnum.Kombi,
                 KundPersonnummer = "19800101-1234",
-                DatumTidpunktUtlamning = DateTime.Now,
-                AktuellMatarstallningUthyrning = 10000,
-                AktuellMatarstallningInlamning = 10500,
-                BeraknatPrisUthyrning = 500m
+                DatumTidpunktUtlamning = new DateTime(2025,08,21),
+                AktuellMatarstallningUthyrning = 10000
             };
             // Arrange
             var mockedUthyrningsDal = new MockedUthyrningsDal
