@@ -1,4 +1,4 @@
-Planerade tillägg:
+Antaganden och planerade tillägg:
 ---------------
 Möjligheter för konfigurerbara databassträngar, olika beroende på kund.
 
