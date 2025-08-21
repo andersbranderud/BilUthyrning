@@ -25,6 +25,4 @@ builder.Services.AddScoped<IUthyrningBL, UthyrningBL>();
 // Register the data access layer
 builder.Services.AddScoped<IUthyrningsDal, UthyrningsDal>();
 
-
-
 app.Run();

@@ -1,6 +1,6 @@
 Planerade tillägg:
 ---------------
-Fil för konfigurerbara databassträngar, olika beroende på kund.
+Möjligheter för konfigurerbara databassträngar, olika beroende på kund.
 
 Implementering av databaslager, inklusive databasmodeller, mapping emellan dessa t.ex. via Entity Framework Core
 
@@ -8,16 +8,24 @@ Hela modulen kan t.ex. leverera som Nuget-paket, så att den enkelt kan integrer
 
 
 Tänkta databastabeller:
+
 Kravspecifikationen beskriver variabelt baspris. För att enkelt kunna konfigurera nya priser både för olika kunder och för olika biltyper, föreslås vi att dessa konfigurationer lagras i en databas. I ett senare skede kan även ett admingränssnitt skapas för att göra uppdateringar för dessa.
 En ändring på antingen BasKmPris eller BasDygnHyra skapar en ny rad i databas för specificerat datumintervall och bilkategori.
 
-BasPris
------
+Om en kund vill ha nya biltyper så läggs de till i denna tabell, och en mappning måste skapas i BilUthyrningKalkylator.cs och BilKategoriEnum.cs
+För existerande biltyper som har en annan prissättning kan kolumnerna för basdygnshyra och kilometerpris användas.
+Ett förslag för att göra det enklare att variera prissättningen beroende på kund är att ta bort multiplarna från BilUthyrningKalkylator.cs, och istället bygga in dessa multiplar i priserna i BasPris-tabellen. Eventuellt kan då samma formel användas för alla kategorier:
+(basDygnsHyra * antalDygn) + (basKmPris * antalKm)
+BasKmPris kan sättas till 0 för småbilar.
+
+BilKategori: Tabell för bilkategorier.
+BilKategoriId
+BilTypEnumId -- För att matcha koden där olika typer har olika beräkningsformler.
+Namn -- Kategorins namn
+BasKmPris -- Konfigurerbart pris per kilometer.
+BasDygnsHyra -- Konfigurerarbar basdygnshyra.
 EffectiveDateFrom: Från vilket datum priset gäller.
 EffectiveDateTo: Till vilket datum priset gäller (Inget värde beskriver att det gäller framöver)
-BasKmPris
-BasDygnsHyra
-BilKategori
 
 Uthyrning: Tabell som beskriver uthyrning av en bil till en kund.
 -----
@@ -33,8 +41,9 @@ BeraknatPrisUthyrning -- Beräknas vid återlämning av bil.
 Bil: Tabell som beskriver en bil
 BilId
 RegistrationsNummer
-BilKategori
+BilKategoriId
 
+Föreslagen utvidgning - en tabell för användare - så att vi kan ha en användare som kan logga in (t.ex. vanlig login eller med Bank ID om vi implementerar det) och sedan ha en sida med information om pågående och avslutade uthyrningar.
 User: Tabell som beskriver en användare.
 UserId
 PersonNummer
