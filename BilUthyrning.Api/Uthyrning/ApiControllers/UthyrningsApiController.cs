@@ -14,8 +14,7 @@ namespace BilUthyrning.Api.ApiControllers
             _uthyrningService = uthyrningService;
         }
 
-        // POST: api/uthyrningar
-        [HttpPost]
+        [HttpPost("utlamning")]
         public async Task<UthyrningsModel> RegistreraUtlamningAvBil([FromBody] UthyrningsModel uthyrning)
         {
             if (uthyrning == null || !ModelState.IsValid)
