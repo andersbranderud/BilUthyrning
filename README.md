@@ -1,4 +1,4 @@
-Planerade tillägg:
+Antaganden och planerade tillägg:
 ---------------
 Möjligheter för konfigurerbara databassträngar, olika beroende på kund.
 
@@ -19,6 +19,7 @@ Ett förslag för att göra det enklare att variera prissättningen beroende på
 BasKmPris kan sättas till 0 för småbilar.
 
 BilKategori: Tabell för bilkategorier.
+-----
 BilKategoriId
 BilTypEnumId -- För att matcha koden där olika typer har olika beräkningsformler.
 Namn -- Kategorins namn
@@ -39,12 +40,14 @@ AktuellMatarstallningInlamning -- Läses av från bilen vid återlämning.
 BeraknatPrisUthyrning -- Beräknas vid återlämning av bil.
 
 Bil: Tabell som beskriver en bil
+-----
 BilId
 RegistrationsNummer
 BilKategoriId
 
 Föreslagen utvidgning - en tabell för användare - så att vi kan ha en användare som kan logga in (t.ex. vanlig login eller med Bank ID om vi implementerar det) och sedan ha en sida med information om pågående och avslutade uthyrningar.
 User: Tabell som beskriver en användare.
+-----
 UserId
 PersonNummer
 Losenord
